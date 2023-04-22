@@ -1,1 +1,4 @@
 *.step
+c#/wam-module/wam-module/obj/Debug/
+c#/wam-module/.vs/wam-module/v17/.suo
+c#/wam-module/wam-module/obj/
