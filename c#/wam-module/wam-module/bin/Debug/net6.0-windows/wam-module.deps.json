@@ -9,6 +9,7 @@
       "wam-module/1.0.0": {
         "dependencies": {
           "Flurl.Http": "3.2.4",
+          "Newtonsoft.Json": "13.0.3",
           "System.Security.Permissions": "7.0.0"
         },
         "runtime": {
@@ -26,7 +27,7 @@
       "Flurl.Http/3.2.4": {
         "dependencies": {
           "Flurl": "3.0.6",
-          "Newtonsoft.Json": "12.0.2",
+          "Newtonsoft.Json": "13.0.3",
           "System.Text.Encoding.CodePages": "4.5.1"
         },
         "runtime": {
@@ -53,11 +54,11 @@
           }
         }
       },
-      "Newtonsoft.Json/12.0.2": {
+      "Newtonsoft.Json/13.0.3": {
         "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "assemblyVersion": "12.0.0.0",
-            "fileVersion": "12.0.2.23222"
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.3.27908"
           }
         }
       },
@@ -153,12 +154,12 @@
       "path": "microsoft.win32.systemevents/7.0.0",
       "hashPath": "microsoft.win32.systemevents.7.0.0.nupkg.sha512"
     },
-    "Newtonsoft.Json/12.0.2": {
+    "Newtonsoft.Json/13.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
-      "path": "newtonsoft.json/12.0.2",
-      "hashPath": "newtonsoft.json.12.0.2.nupkg.sha512"
+      "sha512": "sha512-HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "path": "newtonsoft.json/13.0.3",
+      "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
     "System.Drawing.Common/7.0.0": {
       "type": "package",
