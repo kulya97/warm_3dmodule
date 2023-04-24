@@ -36,16 +36,13 @@ namespace wam_module
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-
             var resp0 = await "https://pro.lceda.cn/api/eda/product/search".PostMultipartAsync(mp => mp
             .AddString("keyword", "C670492")
             .AddString("needAggs", "true")
             .AddString("url", "/ api / eda / product / list")
-            .AddString("currPage", "1")
+            .AddString("currPage", "1")c 
             .AddString("pageSize", "10")
             ).ReceiveString();
-            var json = resp0;
-
             Model1 model1 = JsonConvert.DeserializeObject<Model1>(resp0);
             string hasDevice = model1.result.productList[0].hasDevice;
 
@@ -56,7 +53,6 @@ namespace wam_module
             Model2 model2 = JsonConvert.DeserializeObject<Model2>(resp1);
             string Modelattr = model2.result[0].attributes.Model;
            
-
             var resp2 = await "https://pro.lceda.cn/api/components/searchByIds?forceOnline=1".PostMultipartAsync(mp => mp
             .AddString(" uuids[]", Modelattr)
             .AddString("dataStr", "yes")
@@ -68,14 +64,11 @@ namespace wam_module
             string ModelID = model4.model;
             FootName = model4.src;
 
-          
             string download_url = "https://modules.lceda.cn/qAxj6KHrDKw4blvCG8QJPs7Y/" + ModelID;
             string text = await download_url.GetStringAsync();
             Console.WriteLine(text);
             File.WriteAllText("D:\\"+ FootName+".step", text);
             //Console.WriteLine(FootName);
-
-
         }
 
     }
