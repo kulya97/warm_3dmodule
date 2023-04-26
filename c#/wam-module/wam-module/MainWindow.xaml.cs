@@ -1,6 +1,7 @@
 ﻿
 
 using Flurl.Http;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ using wam_module.Model1NS;
 using wam_module.Model2NS;
 using wam_module.Model3NS;
 using wam_module.Model4NS;
+using static System.Net.Mime.MediaTypeNames;
+
 namespace wam_module
 {
     /// <summary>
@@ -25,8 +28,7 @@ namespace wam_module
     {
 
         public static string path = "0819f05c4eef4c71ace90d822a990e87";
-        public static string code = "C670492";
-        string FootName;
+
 
         public MainWindow()
         {
@@ -34,43 +36,83 @@ namespace wam_module
 
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Check_Button_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private async void Down_Button_Click(object sender, RoutedEventArgs e)
+        {
+            string code = footcode_txbox.Text;
             var resp0 = await "https://pro.lceda.cn/api/eda/product/search".PostMultipartAsync(mp => mp
-            .AddString("keyword", "C670492")
-            .AddString("needAggs", "true")
-            .AddString("url", "/ api / eda / product / list")
-            .AddString("currPage", "1")c 
-            .AddString("pageSize", "10")
-            ).ReceiveString();
+                .AddString("keyword", code)
+                .AddString("needAggs", "true")
+                    .AddString("url", "/ api / eda / product / list")
+                 .AddString("currPage", "1")
+                    .AddString("pageSize", "10")
+                ).ReceiveString();
             Model1 model1 = JsonConvert.DeserializeObject<Model1>(resp0);
-            string hasDevice = model1.result.productList[0].hasDevice;
+            string hasDevice = null;
+            try { hasDevice = model1.result.productList[0].hasDevice; }
+            catch (Exception ex)
+            { MessageBox.Show("元器件不存在！"); return; }
 
             var resp1 = await "https://pro.lceda.cn/api/devices/searchByIds".PostMultipartAsync(mp => mp
             .AddString(" uuids[]", hasDevice)
             .AddString("path", path)
             ).ReceiveString();
             Model2 model2 = JsonConvert.DeserializeObject<Model2>(resp1);
-            string Modelattr = model2.result[0].attributes.Model;
-           
+            string Modelattr;
+
+            try { Modelattr = model2.result[0].attributes.Model; }
+            catch (Exception ex)
+            { MessageBox.Show("元器件不存在！"); return; }
+
             var resp2 = await "https://pro.lceda.cn/api/components/searchByIds?forceOnline=1".PostMultipartAsync(mp => mp
             .AddString(" uuids[]", Modelattr)
             .AddString("dataStr", "yes")
             .AddString("path", path)
             ).ReceiveString();
+
+
             Model3 model3 = JsonConvert.DeserializeObject<Model3>(resp2);
-            string datastr = model3.result[0].dataStr;
+            string datastr = null;
+            try { datastr = model3.result[0].dataStr; }
+            catch (Exception ex)
+            { MessageBox.Show("元器件不存在！"); return; }
             Model4 model4 = JsonConvert.DeserializeObject<Model4>(datastr);
-            string ModelID = model4.model;
-            FootName = model4.src;
+            string ModelID = null;
+            try { ModelID = model4.model; }
+            catch (Exception ex)
+            { MessageBox.Show("元器件不存在！"); return; }
+
+            string FootName = model4.src + ".step";
 
             string download_url = "https://modules.lceda.cn/qAxj6KHrDKw4blvCG8QJPs7Y/" + ModelID;
             string text = await download_url.GetStringAsync();
             Console.WriteLine(text);
-            File.WriteAllText("D:\\"+ FootName+".step", text);
-            //Console.WriteLine(FootName);
+            saveFile(text, FootName);
+            Console.WriteLine(FootName);
+
         }
+        public void saveFile(string url, string FileName)
+        {
+            SaveFileDialog save = new SaveFileDialog();
+            save.Title = "保存封装";
+            save.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; // 默认的保存路径
+            save.FileName = FileName;
+            save.ShowDialog();
+            if (save.FileName != string.Empty)
+            {
+                string path = save.FileName;
 
+                File.WriteAllText(path, url);
+
+
+
+            }
+
+
+        }
     }
-
 }

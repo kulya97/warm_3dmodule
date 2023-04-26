@@ -7,8 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox TextWrapping="Wrap" Text="TextBox" Width="120" HorizontalAlignment="Right"/>
-        <Button Content="Button" HorizontalAlignment="Left" Background="Black" Click="Button_Click"/>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox Name="footcode_txbox" TextWrapping="Wrap" Text="C670492"  Grid.Column="0" Grid.Row="1" />
+        <TextBlock Text="输入立创元器件ID号："/>
+        <Button Content="下载"  Name="down_btn"  Grid.Column="1" Grid.Row="1" Click="Down_Button_Click" />
     </Grid>
 </Window>
