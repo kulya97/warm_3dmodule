@@ -44,7 +44,7 @@ namespace wam_module.Model1NS
         /// <summary>
         /// 
         /// </summary>
-        public string catalogNameEn { get; set; }
+        public string? catalogNameEn { get; set; }
         /// <summary>
         /// 
         /// </summary>

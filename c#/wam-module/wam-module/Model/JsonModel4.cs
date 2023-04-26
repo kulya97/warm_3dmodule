@@ -11,19 +11,19 @@ namespace wam_module.Model4NS
         /// <summary>
         /// 
         /// </summary>
-        public string model { get; set; }
+        public string? model { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string type { get; set; }
+        public string? type { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string src { get; set; }
+        public string? src { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string unit { get; set; }
+        public string? unit { get; set; }
     }
 
 }

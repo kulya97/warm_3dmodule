@@ -2,6 +2,7 @@
 
 using Flurl.Http;
 using Microsoft.Win32;
+using System.Text.Json;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,8 @@ namespace wam_module
         {
 
         }
+        static JsonSerializerSettings mJsonSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+
 
         private async void Down_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -51,8 +54,8 @@ namespace wam_module
                  .AddString("currPage", "1")
                     .AddString("pageSize", "10")
                 ).ReceiveString();
-            Model1 model1 = JsonConvert.DeserializeObject<Model1>(resp0);
-            string hasDevice = null;
+            var model1 = JsonConvert.DeserializeObject<Model1>(resp0, mJsonSettings);
+            string hasDevice;
             try { hasDevice = model1.result.productList[0].hasDevice; }
             catch (Exception ex)
             { MessageBox.Show("元器件不存在！"); return; }
@@ -61,7 +64,9 @@ namespace wam_module
             .AddString(" uuids[]", hasDevice)
             .AddString("path", path)
             ).ReceiveString();
-            Model2 model2 = JsonConvert.DeserializeObject<Model2>(resp1);
+            Console.WriteLine(resp1);
+            var model2 = JsonConvert.DeserializeObject<Model2>(resp1, mJsonSettings);
+
             string Modelattr;
 
             try { Modelattr = model2.result[0].attributes.Model; }
@@ -74,13 +79,13 @@ namespace wam_module
             .AddString("path", path)
             ).ReceiveString();
 
-
-            Model3 model3 = JsonConvert.DeserializeObject<Model3>(resp2);
-            string datastr = null;
+            
+            var model3 = JsonConvert.DeserializeObject<Model3>(resp2, mJsonSettings);
+            string datastr ;
             try { datastr = model3.result[0].dataStr; }
             catch (Exception ex)
             { MessageBox.Show("元器件不存在！"); return; }
-            Model4 model4 = JsonConvert.DeserializeObject<Model4>(datastr);
+            var model4 = JsonConvert.DeserializeObject<Model4>(datastr, mJsonSettings);
             string ModelID = null;
             try { ModelID = model4.model; }
             catch (Exception ex)

@@ -11,19 +11,19 @@ namespace wam_module.Model3NS
         /// <summary>
         /// 
         /// </summary>
-        public string uuid { get; set; }
+        public string? uuid { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string username { get; set; }
+        public string? username { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string nickname { get; set; }
+        public string? nickname { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string avatar { get; set; }
+        public string? avatar { get; set; }
     }
 
     public class Creator
@@ -31,19 +31,19 @@ namespace wam_module.Model3NS
         /// <summary>
         /// 
         /// </summary>
-        public string uuid { get; set; }
+        public string? uuid { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string username { get; set; }
+        public string? username { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string nickname { get; set; }
+        public string? nickname { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string avatar { get; set; }
+        public string? avatar { get; set; }
     }
 
     public class Owner
@@ -51,19 +51,19 @@ namespace wam_module.Model3NS
         /// <summary>
         /// 
         /// </summary>
-        public string uuid { get; set; }
+        public string? uuid { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string username { get; set; }
+        public string? username { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string nickname { get; set; }
+        public string? nickname { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string avatar { get; set; }
+        public string? avatar { get; set; }
     }
 
     public class Tags
@@ -71,11 +71,11 @@ namespace wam_module.Model3NS
         /// <summary>
         /// 
         /// </summary>
-        public List<string> parent_tag { get; set; }
+        public List<string>? parent_tag { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public List<string> child_tag { get; set; }
+        public List<string>? child_tag { get; set; }
     }
 
     public class ResultItem
@@ -83,23 +83,23 @@ namespace wam_module.Model3NS
         /// <summary>
         /// 
         /// </summary>
-        public string uuid { get; set; }
+        public string? uuid { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Modifier modifier { get; set; }
+        public Modifier? modifier { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Creator creator { get; set; }
+        public Creator? creator { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Owner owner { get; set; }
+        public Owner? owner { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string description { get; set; }
+        public string? description { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -107,15 +107,15 @@ namespace wam_module.Model3NS
         /// <summary>
         /// 
         /// </summary>
-        public string dataStr { get; set; }
+        public string? dataStr { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Tags tags { get; set; }
+        public Tags? tags { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string source { get; set; }
+        public string? source { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -123,7 +123,7 @@ namespace wam_module.Model3NS
         /// <summary>
         /// 
         /// </summary>
-        public string title { get; set; }
+        public string? title { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -131,7 +131,7 @@ namespace wam_module.Model3NS
         /// <summary>
         /// 
         /// </summary>
-        public string display_title { get; set; }
+        public string? display_title { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -143,7 +143,7 @@ namespace wam_module.Model3NS
         /// <summary>
         /// 
         /// </summary>
-        public string success { get; set; }
+        public string? success { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -151,7 +151,7 @@ namespace wam_module.Model3NS
         /// <summary>
         /// 
         /// </summary>
-        public List<ResultItem> result { get; set; }
+        public List<ResultItem>? result { get; set; }
     }
 
 }
