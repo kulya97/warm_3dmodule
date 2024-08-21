@@ -1,3 +1,4 @@
 # warm_3dmodule
+用于下载嘉立创3d模型
+## 使用方法
 
-![230426_215253](https://kulya-pic.oss-cn-shanghai.aliyuncs.com/202304262152121.png)
